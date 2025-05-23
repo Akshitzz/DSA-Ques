@@ -14,19 +14,37 @@
 // default copy contructor do shallow copy 
 // shallow copy changes the orginal product also 
 // deep copy -> points to orginal but doesnt change original one
-
-
+// copy assignment operator -> hero a (10,'c') hero b (20,'b')
+// a=b
+// destructor -> used to dellocate memory (free memory) same name as class name also doenst have input param and return type
+// static keyword -> a data membor which belongs to class access krne ke liye no need to make object 
+// first initalize the static member outside main function
+// scope resolution operator
+// static functions no need to create object do not have this keyword
+// pointer to current object
+// static functions can access static members only
 #include "hero.cpp" // including class from other file 
 #include <iostream>
 using namespace std;
 
 
 
+
+
+
+
+
+
+
+
     
     class Hero {
+
+
     // properties
    public:
     int health ;
+    static int timeToComplete;
     char level ;
     int fr;
     char fr2;
@@ -39,7 +57,9 @@ using namespace std;
         cout << level2 << endl;
 
     }
-
+    static int random(){
+        return health;
+    }
     void print(){
         cout <<endl;
         cout << "Name:" <<this->name<<",";
@@ -72,10 +92,35 @@ using namespace std;
         void setName(char name()){
             strcpy(this->name,name);
         }
+        ~Hero(){
+            cout << "Destructor bhai called" <<endl ;
+        }
 };
+
+int Hero :: timeToComplete =5;
+
 
 
 int main (){
+    cout <<Hero::random()<<endl;
+ cout << Hero ::timeToComplete <<endl;
+// static
+    Hero a;
+    cout <<a.timeToComplete<<endl; // not recommended
+    // dynamic
+    Hero *b =new Hero()
+    // manually call destructor
+    delete b;
+
+    Hero b ;
+    b.timeToComplete =10
+    cout << a.timeToComplete <<endl;
+    cout << b.timeToComplete <<endl;
+
+
+
+
+
 
 
      Hero hero1;
@@ -108,6 +153,9 @@ R.print();
 
 
 
+    hero1 =hero2;
+    hero1.print();
+    hero2.print();
 
 
 
@@ -151,8 +199,12 @@ R.print();
     return 0;
 }
 
-
+// difference between contructor and destructor
+// ~Hero(){
+// }
 // getter and setter 
 //  function inside a class to access data members of a class
-
+// if you create an object statically destructor will be called automatically
+// not in the case of dynamic allocation
 // homework - > padding greedy alignment
+// hw -> constant keyword and how it is used in object keyword constant object creation initialization list 
